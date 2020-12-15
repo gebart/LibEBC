@@ -168,7 +168,7 @@ TEST_CASE("Bitcode Archive Files", "[BitcodeArchive]") {
 
   auto actualFiles = bitcodeArchive.GetEmbeddedFiles();
   if (util::xar::HasXar()) {
-    REQUIRE(expectedFiles.size() == 2);
+    REQUIRE(actualFiles.size() == 2);
   } else {
     REQUIRE(actualFiles.empty());
   }
