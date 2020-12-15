@@ -2,10 +2,7 @@ cmake_minimum_required(VERSION 3.7.0)
 include(CheckLibraryExists)
 
 # LibXml2 Dependency
-find_package(PkgConfig)
-#pkg_check_modules(LIBXML2 libxml-2.0 IMPORTED_TARGET)
-
-include_directories(${CMAKE_OSX_SYSROOT}/usr/include/libxml2)
+find_package(LibXml2 REQUIRED)
 
 if (NOT TARGET LLVMCore)
   # LLVM Dependency
@@ -76,7 +73,7 @@ target_link_libraries(ebc
   ${ICONV_LIBRARY}
   ${XAR_LIBRARY}
   ${EBC_LLVM_LIBRARIES}
-  xml2)
+  LibXml2::LibXml2)
 
 target_include_directories(ebc PRIVATE ${PROJECT_BINARY_DIR})
 target_include_directories(ebc PUBLIC include)

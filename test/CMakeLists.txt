@@ -1,9 +1,3 @@
-# LibXml2 Dependency
-find_package(PkgConfig)
-pkg_check_modules(LIBXML2 REQUIRED libxml-2.0 IMPORTED_TARGET)
-
-include_directories(${LIBXML2_INCLUDE_DIRS})
-
 # Create test binary
 add_executable(ebctest
   src/Main.cpp
@@ -16,7 +10,7 @@ add_executable(ebctest
   src/TestUUID.cpp
   src/TestXmlUtil.cpp
 )
-target_link_libraries(ebctest ebc ${LIBXML2_LIBRARIES})
+target_link_libraries(ebctest ebc)
 target_include_directories(ebctest PRIVATE "catch")
 
 # Use C++14 for tests
