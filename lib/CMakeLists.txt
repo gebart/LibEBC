@@ -23,9 +23,6 @@ else()
   )
 endif()
 
-# LLVM compiler flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fno-rtti -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS")
-
 # Xar
 set(BUILD_WITH_XAR ON CACHE BOOL "Build with xar support")
 if(BUILD_WITH_XAR)
