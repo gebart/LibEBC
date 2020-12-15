@@ -56,12 +56,21 @@ configure_file (
   "${PROJECT_BINARY_DIR}/ebc/Config.h")
 
 # LibEBC
-set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
-set(HEADER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
-file(GLOB_RECURSE SOURCE_FILES ${SOURCE_DIR}/*.cpp)
-
-add_library(ebc ${SOURCE_FILES})
+add_library(ebc
+  src/BinaryMetadata.cpp
+  src/BitcodeArchive.cpp
+  src/BitcodeContainer.cpp
+  src/BitcodeMetadata.cpp
+  src/BitcodeRetriever.cpp
+  src/EmbeddedFile.cpp
+  src/EmbeddedFileFactory.cpp
+  src/EmbeddedXar.cpp
+  src/util/Bitcode.cpp
+  src/util/MachO.cpp
+  src/util/UUID.cpp
+  src/util/Xar.cpp
+  src/util/Xml.cpp
+)
 target_link_libraries(ebc
   ${UUID_LIBRARY}
   ${ICONV_LIBRARY}
@@ -69,8 +78,8 @@ target_link_libraries(ebc
   ${EBC_LLVM_LIBRARIES}
   xml2)
 
-target_include_directories(ebc PRIVATE  ${PROJECT_BINARY_DIR})
-target_include_directories(ebc PUBLIC ${HEADER_DIR})
+target_include_directories(ebc PRIVATE ${PROJECT_BINARY_DIR})
+target_include_directories(ebc PUBLIC include)
 
 # Use C++14
 set_property(TARGET ebc PROPERTY CXX_STANDARD 14)

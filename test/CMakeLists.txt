@@ -4,12 +4,18 @@ pkg_check_modules(LIBXML2 REQUIRED libxml-2.0 IMPORTED_TARGET)
 
 include_directories(${LIBXML2_INCLUDE_DIRS})
 
-# Test source files
-set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
-file(GLOB_RECURSE SOURCE_FILES ${SOURCE_DIR}/*.cpp)
-
 # Create test binary
-add_executable(ebctest ${SOURCE_FILES})
+add_executable(ebctest
+  src/Main.cpp
+  src/TestBinaryMetadata.cpp
+  src/TestBitcodeArchive.cpp
+  src/TestBitcodeContainer.cpp
+  src/TestBitcodeMetadata.cpp
+  src/TestBitcodeUtil.cpp
+  src/TestEmbeddedBitcode.cpp
+  src/TestUUID.cpp
+  src/TestXmlUtil.cpp
+)
 target_link_libraries(ebctest ebc ${LIBXML2_LIBRARIES})
 target_include_directories(ebctest PRIVATE "catch")
 
