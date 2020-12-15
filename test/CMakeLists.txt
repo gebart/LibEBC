@@ -22,6 +22,4 @@ target_include_directories(ebctest PRIVATE "catch")
 # Use C++14 for tests
 set_property(TARGET ebctest PROPERTY CXX_STANDARD 14)
 
-# Enable ctest
-enable_testing(true)
 add_test(ebctest ebctest)

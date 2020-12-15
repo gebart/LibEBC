@@ -6,6 +6,10 @@ project (LibEBC)
 set(VERSION_MAJOR 1)
 set(VERSION_MINOR 2)
 
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+  include(CTest)
+endif()
+
 # Git commit hash
 execute_process(
   COMMAND git log -1 --format=%h
@@ -38,5 +42,7 @@ set(CMAKE_CXX_FLAGS_DEBUG   "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g -O0 -fno-omit-fra
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
 
 add_subdirectory(lib)
-#add_subdirectory(test)
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
+  add_subdirectory(test)
+endif()
 #add_subdirectory(tool)
