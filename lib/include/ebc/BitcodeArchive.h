@@ -3,7 +3,7 @@
 #include "ebc/BitcodeContainer.h"
 
 #include <array>
-#include <cstdint>
+#include <cstddef>
 #include <memory>
 #include <string>
 #include <vector>
