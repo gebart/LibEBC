@@ -16,7 +16,6 @@ class EmbeddedBitcode : public EmbeddedFile {
       : EmbeddedFile(buffer, bufferSize, EmbeddedFile::Type::Bitcode), _bitcodeType(bitcodeType) {}
   EmbeddedBitcode(char *buffer, size_t bufferSize)
       : EmbeddedFile(buffer, bufferSize, EmbeddedFile::Type::Bitcode), _bitcodeType(BitcodeType::Bitcode) {}
-  ~EmbeddedBitcode() = default;
 
   BitcodeType GetBitcodeType() {
     return _bitcodeType;
